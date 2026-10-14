@@ -47,3 +47,11 @@ npm run build
 GitHub Actions executa tests i compilació i publica `dist/` a Pages en pujar a `main`. La configuració de Pages ha d’utilitzar GitHub Actions.
 
 Tests de model: numeració, validació d’esquema i referències, fusió de registres, conflictes i col·lisions, escapament HTML i exclusió de notes internes. Cal validar al navegador real la vinculació, permisos, retorn després de tancar, sincronització OneDrive i enganxat enriquit a Outlook.
+
+## Catàleg de dispositius i plantilles ràpides
+
+A Configuració pots descarregar `dispositius.xlsx` buit i importar-lo amb columna A **Serial Number** i columna B **SACE**. Usa cel·les de text per mantenir zeros inicials. El primer full es llegeix localment; les correspondències s’afegeixen al JSON i no necessites tornar a importar l’Excel a cada ordinador. Per oferir el catàleg des de la web, posa’l a `public/dispositius.xlsx` abans de compilar i utilitza «Llegir dispositius.xlsx de la web». En aquest cas el catàleg serà públic; la importació local conserva les dades al teu dispositiu.
+
+Al tiquet, «Escanejar / registrar dispositiu» accepta el lector de codis de barres amb confirmació Enter. Cerca el codi complet en SACE i SN, sense distingir majúscules; si no el troba, cerca `S` + els vuit primers caràcters del codi en SN. Si no hi ha coincidència, indica que cal introduir el SACE manualment. En desar, la correspondència SN–SACE queda al JSON i el dispositiu es vincula al tiquet. Un SACE ja registrat reutilitza el dispositiu existent. El botó de còpia al costat del SACE copia només el codi.
+
+Les plantilles ràpides es creen, editen, dupliquen i eliminen a Configuració. Inclouen títol, descripció, tipus, categoria, prioritat i subtasques. Els tiquets creats són independents de la plantilla. S’han retirat els camps de responsable de la interfície i dels informes; els camps antics es conserven al JSON per compatibilitat.
